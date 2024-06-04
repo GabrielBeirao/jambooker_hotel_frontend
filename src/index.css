@@ -23,7 +23,7 @@ body {
   left: 0;
   right: 0;
   content: '';
-  background-color:rgb(169, 77, 123) ;
+  background-color:rgb(83, 252, 243) ;
   width: 0;
   margin: 0 auto;
   height: 4px;
@@ -54,7 +54,7 @@ body {
 
   /* Hotel custom color */
  .btn-hotel{
-  background-color: rgb(169, 77, 123);
+  background-color: rgb(70, 123, 240);
   color: #fff;
   }
   .btn-hotel:hover{
@@ -67,7 +67,8 @@ body {
   }
 
   .hotel-color{
-    color: rgb(169, 77, 123);
+    color:rgb(25, 27, 141);
+    /* rgb(21, 126, 0); */
   }
   .room-price{
     color:darkgoldenrod;
@@ -82,7 +83,7 @@ body {
 
 
 .parallax {
-  background-image: url("./assets/images/parrall.jpg");
+  background-image: url("./assets/images/parrall2.jpg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -189,7 +190,7 @@ body {
 
 /* The header banner */
 .header-banner {
-  background-image:  url("./assets/images/services-1.jpg");
+  background-image:  url("./assets/images/jambooker_2.png");
    background-size: cover;
   background-position: center;
    position: relative;

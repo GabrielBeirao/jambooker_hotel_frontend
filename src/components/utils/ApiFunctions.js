@@ -8,7 +8,7 @@ export const getHeader = () => {
 	const token = localStorage.getItem("token")
 	return {
 		Authorization: `Bearer ${token}`,
-		"Content-Type": "multipart/form-data;"
+		"Content-Type": "application/json"
 	}
 }
 
@@ -20,7 +20,7 @@ export async function addRoom(photo, roomType, roomPrice) {
 	formData.append("roomPrice", roomPrice)
 
 	const response = await api.post("/rooms/add/new-room", formData,{
-		headers: getHeader()
+		headers: {...getHeader(), "Content-Type": "multipart/form-data;"}
 	})
 	if (response.status === 201) {
 		return true
@@ -84,7 +84,10 @@ export async function getRoomById(roomId) {
 /* This function saves a new booking to the databse */
 export async function bookRoom(roomId, booking) {
 	try {
-		const response = await api.post(`/bookings/room/${roomId}/booking`, booking)
+		const response = await api.post(`/bookings/room/${roomId}/booking`, booking, {
+			headers: getHeader()
+		})
+		
 		return response.data
 	} catch (error) {
 		if (error.response && error.response.data) {
@@ -108,9 +111,11 @@ export async function getAllBookings() {
 }
 
 /* This function get booking by the cnfirmation code */
-export async function getBookingByConfirmationCode(confirmationCode) {
+export async function getBookingByConfirmationCode(confirmationCode, userId) {
 	try {
-		const result = await api.get(`/bookings/confirmation/${confirmationCode}`)
+		const result = await api.get(`/bookings/confirmation/${confirmationCode}`, userId, {
+			headers: getHeader()
+		})
 		return result.data
 	} catch (error) {
 		if (error.response && error.response.data) {

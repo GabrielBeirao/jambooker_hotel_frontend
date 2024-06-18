@@ -27,6 +27,7 @@ const Profile = () => {
 
 	const userId = localStorage.getItem("userId")
 	const token = localStorage.getItem("token")
+	const userRole = localStorage.getItem("userRole")
 
 	useEffect(() => {
 		const fetchUser = async () => {
@@ -48,7 +49,7 @@ const Profile = () => {
 				setBookings(response)
 			} catch (error) {
 				console.error("Error fetching bookings:", error.message)
-				setErrorMessage(error.message)
+				//setErrorMessage(error.message)
 			}
 		}
 
@@ -150,7 +151,7 @@ const Profile = () => {
 
 							<h4 className="card-title text-center">Booking History</h4>
 
-							{bookings.length > 0 ? (
+							{bookings.length > 0 && userRole != "ROLE_ADMIN" ? (
 								<table className="table table-bordered table-hover shadow">
 									<thead>
 										<tr>

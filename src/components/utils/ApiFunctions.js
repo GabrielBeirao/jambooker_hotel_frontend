@@ -113,7 +113,7 @@ export async function getAllBookings() {
 /* This function get booking by the cnfirmation code */
 export async function getBookingByConfirmationCode(confirmationCode, userId) {
 	try {
-		const result = await api.get(`/bookings/confirmation/${confirmationCode}`, userId, {
+		const result = await api.get(`/bookings/confirmation/${confirmationCode}`, {
 			headers: getHeader()
 		})
 		return result.data
@@ -129,7 +129,9 @@ export async function getBookingByConfirmationCode(confirmationCode, userId) {
 /* This is the function to cancel user booking */
 export async function cancelBooking(bookingId) {
 	try {
-		const result = await api.delete(`/bookings/booking/${bookingId}/delete`)
+		const result = await api.delete(`/bookings/booking/${bookingId}/delete` , {
+			headers: getHeader()
+		})
 		return result.data
 	} catch (error) {
 		throw new Error(`Error cancelling booking :${error.message}`)
